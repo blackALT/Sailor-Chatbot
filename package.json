@@ -1,0 +1,27 @@
+{
+  "name": "apisailorbot",
+  "version": "1.0.0",
+  "description": "Chatbot Telegram using API Sailor commands",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon bot.js"
+  },
+  "author": "blackALT",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "dotenv-safe": "^8.2.0",
+    "nodemon": "^2.0.6",
+    "telegraf": "^3.38.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackALT/APISailor-chatbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blackALT/APISailor-chatbot/issues"
+  },
+  "homepage": "https://github.com/blackALT/APISailor-chatbot#readme"
+}
