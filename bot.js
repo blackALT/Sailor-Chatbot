@@ -5,10 +5,8 @@ const axios = require("axios");
 
 const helpMessage = `
     API Sailor Bot:
-    /malicious - Returns GET /urls/malicious
-    /urls - Returns GET /urls
-    /urls <target> -  GET /urls by target
-    /urls <url> -  GET /urls by url
+    /searchTarget <target> - Returns GET /urls?target=query
+    /searchURL <url> - Returns GET /urls?url=query
     /addUrl - Send POST /urls
 `;
 
@@ -28,18 +26,35 @@ bot.help(ctx => {
     ctx.reply(helpMessage);
 });
 
-bot.command('malicious', (ctx) => {
-    let inputUser = ctx.message.text;
-    let inputArray = inputUser.split(" ");
-    let query = inputArray[1]   
-    axios.get('https://reprograma-sailor.herokuapp.com/urls/malicious',{
+bot.command('searchURL', (ctx) => {
+    let input = ctx.message.text.split(" ");
+    let query = input[1];   
+    axios.get('https://reprograma-sailor.herokuapp.com/urls',{
+        params:{
+            url: query
+        }
+    })
+    .then(res => {
+        console.log(res.data)
+        console.log(query);
+        ctx.reply(res.data);       
+    }) .catch( err => {
+        console.log(err);
+        ctx.reply(err);
+    })
+})
+
+bot.command('searchTarget', (ctx) => {
+    let input = ctx.message.text.split(" ");
+    let query = input[1];   
+    axios.get('https://reprograma-sailor.herokuapp.com/urls',{
         params:{
             target: query
         }
     })
     .then(res => {
         console.log(res.data)
-        console.log(asdss);
+        console.log(query);
         ctx.reply(res.data);       
     }) .catch( err => {
         console.log(err);
